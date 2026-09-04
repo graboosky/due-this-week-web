@@ -1,0 +1,117 @@
+/*
+  One stylesheet, hand-written, colours defined once at the top.
+
+  The values are the app's own — DueThisWeek/designSystem's ramp, copied by hand
+  because this repository has no design system and does not need one. The rule
+  behind that folder still applies: a hex written twice is a hex that will
+  disagree with itself, so they are written once, here.
+
+  No web fonts. The app's pitch is that nothing leaves the parent's phone, and a
+  privacy policy served from a page that fetches a font from somebody else is the
+  one joke a reviewer will not find funny.
+*/
+
+:root {
+    --ground: #f3f2ef;
+    --surface: #ffffff;
+    --ink: #1b1a17;
+    --ink-secondary: #5c5951;
+    --ink-tertiary: #6e6a63;
+    --accent: #2f6f62;
+    --accent-soft: #e4eeeb;
+    --hairline: #dfdcd4;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ground: #121211;
+        --surface: #1d1d1b;
+        --ink: #f4f3ef;
+        --ink-secondary: #aba79d;
+        --ink-tertiary: #8c887e;
+        --accent: #5fbfaa;
+        --accent-soft: #1e322d;
+        --hairline: #333330;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0 1.25rem 5rem;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+}
+
+.page { max-width: 40rem; margin: 0 auto; }
+
+header { padding: 3rem 0 1.5rem; }
+
+h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-family: var(--serif);
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 2.5rem 0 0.75rem;
+}
+
+.lede { color: var(--ink-secondary); font-size: 1.1875rem; margin: 0; }
+
+.effective { color: var(--ink-tertiary); font-size: 0.9375rem; margin: 0.25rem 0 0; }
+
+p { margin: 0 0 1rem; }
+
+strong { font-weight: 600; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+a:hover { text-decoration-thickness: 2px; }
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.points { list-style: none; margin: 1.5rem 0; padding: 0; }
+
+.points li {
+    padding: 0 0 0 1.75rem;
+    margin: 0 0 0.75rem;
+    position: relative;
+    color: var(--ink-secondary);
+}
+
+.points li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+nav { border-top: 1px solid var(--hairline); margin-top: 3.5rem; padding-top: 1.5rem; }
+
+nav a { margin-right: 1.25rem; display: inline-block; }
+
+footer { color: var(--ink-tertiary); font-size: 0.9375rem; margin-top: 1.5rem; }
+
+/* The page has to be readable with CSS off, so nothing here hides content. */

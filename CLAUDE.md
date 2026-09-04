@@ -23,7 +23,12 @@ rejection is written about.
 ```
 due-this-week-web/
 ├── CLAUDE.md
-└── <TODO: fill in once the site has a shape>
+├── render-legal.py   generates privacy.html and terms.html from ../docs/domain.md
+├── style.css         one stylesheet, colours defined once at the top
+├── index.html        what the product is, and what it costs
+├── privacy.html      GENERATED — do not edit
+├── terms.html        GENERATED — do not edit
+└── support.html      how to get in touch, and the questions people ask
 ```
 
 **This tree is the single source of truth for this repository's structure. When a folder is
@@ -31,15 +36,21 @@ added, removed, or renamed, update it in the same change.**
 
 ## Status
 
-Nothing is scaffolded. There is no page and no styling.
+Four pages, written and serving locally. **Hosting is not turned on** — see below, and it is
+the one thing standing between this and a store submission.
 
-**Stack decided:** plain HTML and CSS, hand-written, **no build step**. No framework, no
-package manifest, no `node_modules`, no generator. Three or four documents that change a few
-times a year do not earn a toolchain, and a toolchain is a thing that breaks between the day
-it is set up and the day the site is urgently needed.
+**Stack:** plain HTML and CSS, hand-written, **no build step**. No framework, no package
+manifest, no `node_modules`. Four documents that change a few times a year do not earn a
+toolchain, and a toolchain is a thing that breaks between the day it is set up and the day the
+site is urgently needed.
 
-**First task:** write `index.html`, `privacy.html`, `terms.html`, and `support.html`, and
-turn on hosting. Do it in this folder without discarding what is already here.
+`render-legal.py` is the one exception and it is not a build step — it is a copier. See
+**Generated content**.
+
+**`support.html` carries a placeholder.** The contact address reads `SUPPORT_EMAIL` and must
+be a real one before submission: App Review fetches the support URL and a page with no way to
+reach anybody is a rejection. It is left as a placeholder deliberately rather than guessed —
+publishing somebody's address is the owner's decision, not an assumption.
 
 ## Serving it — read this before the first App Store submission
 
@@ -92,8 +103,18 @@ pricing, release notes — say so **on the page and here**, with the command tha
 it. A file silently overwritten by an export script is a file someone will edit by hand and
 lose.
 
-- <TODO: none yet. The legal text is currently copied by hand from `../docs/domain.md`; if
-  that ever becomes a script, this is where it gets named.>
+- **`privacy.html` and `terms.html` are generated** from `../docs/domain.md` by
+  `./render-legal.py`. Each carries an HTML comment saying so. Edit the contract, run the
+  script, commit both.
+
+```bash
+./render-legal.py            # after any change to the legal text
+./render-legal.py --check    # fails when a page is out of date
+```
+
+  The legal text is authored in the container because the app's own disclosures quote it. A
+  policy edited here and not there is the exact discrepancy an App Review rejection is written
+  about — which is why editing these two files directly loses the edit at the next run.
 
 ## Conventions
 
