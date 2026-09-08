@@ -7,5 +7,6 @@ This is a submodule of the [`due-this-week`](https://github.com/graboosky/due-th
 container, which is the directory you should actually be working from.
 
 The text on these pages is authored in the container's `docs/domain.md` and rendered here,
-not written here. See `CLAUDE.md` — including the note on hosting, which has to be settled
-before the first App Store submission.
+not written here. See `CLAUDE.md`.
+
+Served by GitHub Pages at <https://graboosky.github.io/due-this-week-web/>.

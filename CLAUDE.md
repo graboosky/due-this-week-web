@@ -36,8 +36,8 @@ added, removed, or renamed, update it in the same change.**
 
 ## Status
 
-Four pages, written and serving locally. **Hosting is not turned on** — see below, and it is
-the one thing standing between this and a store submission.
+Four pages, written and **live on GitHub Pages** since 8 September 2026 — see *Serving it*.
+The one thing left standing between this and a store submission is the support address below.
 
 **Stack:** plain HTML and CSS, hand-written, **no build step**. No framework, no package
 manifest, no `node_modules`. Four documents that change a few times a year do not earn a
@@ -57,23 +57,24 @@ publishing somebody's address is the owner's decision, not an assumption.
 | What | Value |
 |---|---|
 | Production URL | `https://graboosky.github.io/due-this-week-web/` |
-| Host | GitHub Pages |
+| Host | GitHub Pages — the `main` branch, root folder, legacy build; no Actions workflow |
+| Repository | **public** since 8 September 2026 |
 | DNS / registrar | none — no custom domain |
+| Deploy | a push to `main`; Pages rebuilds in under a minute and there is nothing else to do |
 
-**There is a blocker on that plan, and it is better dealt with now than during a
-submission.** `graboosky/due-this-week-web` is a **private** repository and the account is on
-the **free** plan. GitHub Pages cannot publish from a private repository on a free plan, so
-the URL above returns nothing until one of these happens:
+**The repository is public on purpose.** GitHub Pages cannot publish a private repository on
+the free plan, and this is a legal and marketing site — its entire content is meant to be
+read by strangers, so there is nothing here to protect. What that decision costs is the same
+rule as everywhere else in the container, now with no safety net at all: no key, no
+credential, and no address that is not meant to be public ever enters this repository.
 
-1. **Make this repository public.** It is a legal and marketing site — its entire content is
-   meant to be read by strangers — so there is nothing here to protect. This is the default
-   answer and it is one setting. It is the owner's call, not an automatic one, which is why
-   the repository was created private.
-2. **Serve it from Cloudflare Pages or Netlify instead.** Both publish from a private
-   repository on their free tiers. Choose this if the repository should stay private for a
-   reason this file does not know about.
+**Publishing is a push.** There is no deploy step and no secret involved; Pages serves the
+files as committed. After a push, `curl -sI` on the page that changed is the whole check, and
+the build's own verdict is one call away:
 
-Whichever wins, record it in the table above and delete this list.
+```bash
+gh api repos/graboosky/due-this-week-web/pages/builds/latest --jq '{status,error:.error.message}'
+```
 
 **The URLs must return 200 before any store submission**, because review fetches them and a
 404 costs a review cycle. `../docs/release.md` puts web first in the ship order for exactly
