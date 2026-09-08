@@ -37,7 +37,7 @@ added, removed, or renamed, update it in the same change.**
 ## Status
 
 Four pages, written and **live on GitHub Pages** since 8 September 2026 — see *Serving it*.
-The one thing left standing between this and a store submission is the support address below.
+Nothing here stands between the site and a store submission.
 
 **Stack:** plain HTML and CSS, hand-written, **no build step**. No framework, no package
 manifest, no `node_modules`. Four documents that change a few times a year do not earn a
@@ -47,10 +47,11 @@ site is urgently needed.
 `render-legal.py` is the one exception and it is not a build step — it is a copier. See
 **Generated content**.
 
-**`support.html` carries a placeholder.** The contact address reads `SUPPORT_EMAIL` and must
-be a real one before submission: App Review fetches the support URL and a page with no way to
-reach anybody is a rejection. It is left as a placeholder deliberately rather than guessed —
-publishing somebody's address is the owner's decision, not an assumption.
+**`support.html` names a real address** — `p.grabowski.kontakt@gmail.com`, the owner's, set on
+8 September 2026 and deliberately not before: the page shipped as `SUPPORT_EMAIL` until the
+owner said which address to publish, because publishing somebody's address is their decision,
+not an assumption. App Review fetches the support URL, and a page with no way to reach anybody
+is a rejection — so if the address ever changes, this page changes in the same commit.
 
 ## Serving it — read this before the first App Store submission
 
